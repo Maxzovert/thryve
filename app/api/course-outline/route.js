@@ -18,7 +18,7 @@ export async function POST(req) {
         createdBy : createdBy,
         topic : topic,
         courseLayout : aiResult
-    }).returning({STUDY_MATERIAL_TABLE});
+    }).returning({resp : STUDY_MATERIAL_TABLE});
 
     console.log(dbResult);
 
