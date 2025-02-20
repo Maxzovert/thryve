@@ -74,10 +74,12 @@ export const GenerateNotes = inngest.createFunction(
    })
 
    const updateCourseStatusResult = await step.run('Update Course Status to Ready',async()=>{
-    const result = await db.update(STUDY_MATERIAL_TABLE).set({
-      status : 'Ready'
-    }).where(eq(STUDY_MATERIAL_TABLE.courseId,course?.chapterId));
-    return 'Success'
+    const result = await db
+    .update(STUDY_MATERIAL_TABLE)
+    .set({status : 'Ready'})
+    .where(eq(STUDY_MATERIAL_TABLE.courseId,course?.courseId))
+    // .returning();
+    return 'Success';
    })
   }
 )
