@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { RefreshCcw } from "lucide-react";
+import Link from "next/link";
 
 function CourseCardItem({course}) {
   return (
@@ -23,7 +24,7 @@ function CourseCardItem({course}) {
       <div className="mt-3 flex justify-end">
         {course?.status == 'Generating' ? <h2 className="text-md first-letter:p-1 px-2 rounded-full flex gap-2 items-center bg-gray-400 text-white"> 
             <RefreshCcw className="h-5 w-5 animate-spin"/>
-            Generating...</h2>: <Button>view</Button>}
+            Generating...</h2>:<Link href={'/course/'+course?.courseId}><Button>view</Button></Link>}
       </div>
     </div>
   )
