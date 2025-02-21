@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from 'react'
 import CourseIntro from "./_components/CourseIntro";
+import StudyMeterial from "./_components/StudyMeterial";
+import ChapterList from "./_components/ChapterList";
 
 function  Course() {
     const {courseId} = useParams();
@@ -22,6 +24,8 @@ function  Course() {
       <Header/>
       <div className="mx-10 md:mx-36 lg:px-60 mt-10">
       <CourseIntro course={course}/>
+      <StudyMeterial/>
+      <ChapterList course={course}/>
       </div>
     </div>
   )
