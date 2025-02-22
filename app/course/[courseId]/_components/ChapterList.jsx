@@ -7,7 +7,7 @@ function ChapterList({course}) {
       <h2 className="font-medium text-xl">Chapters List</h2>
       <div className="mt-3 ">
         {CHAPTERS?.map((chapter, index)=>(
-            <div className="flex gap-5 items-center p-4 border shadow-md mb-2 rounded-lg cursor-pointer">
+            <div className="flex gap-5 items-center p-4 border shadow-md mb-2 rounded-lg cursor-pointer" key={index}>
                 <h2 className="text-2xl">{chapter?.chapter_emoji || chapter?.emoji}</h2>
                 <div>
                     <h2 className="font-medium">{chapter?.chapter_title}</h2>
