@@ -1,5 +1,4 @@
 "use client"
-import Header from "@/app/dashboard/_components/Header";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from 'react'
@@ -21,8 +20,7 @@ function  Course() {
     }
   return (
     <div>
-      <Header/>
-      <div className="mx-10 md:mx-36 lg:px-60 mt-10">
+      <div className="">
       <CourseIntro course={course}/>
       <StudyMeterial courseId={courseId}/>
       <ChapterList course={course}/>

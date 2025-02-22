@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     const {courseId , topic , courseType , difficultyLevel , createdBy} = await req.json();
 
-     const PROMPT = 'Generate a study material for '+topic+' for '+courseType+' and level of difficulty will be '+difficultyLevel+' with summery of course, List of Chapters (Atleast 10 chapters) along with summery and Emoji icon for each chapter for each chapter sepratly(do not add emoji in chapter_title and generate emoji in json like this  "emoji": "➕"), Topic list in each chapter, all result in JSON format'
+     const PROMPT = 'Generate a study material for '+topic+' for '+courseType+' and level of difficulty will be '+difficultyLevel+' with summery of course, List of Chapters (Atleast 8 chapters) along with summery and Emoji icon for each chapter for each chapter sepratly(do not add emoji in chapter_title and generate emoji in json like this  "emoji": "➕"), Topic list in each chapter, all result in JSON format'
 
 
     const aiResp = await courseOutline.sendMessage(PROMPT);

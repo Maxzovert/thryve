@@ -58,7 +58,26 @@ export const GenerateNotes = inngest.createFunction(
     const Chapters = course?.courseLayout?.chapters;
     let index = 0;
     Chapters.forEach(async(Chapter)=>{
-      const PROMPT = 'Generate exam material detail content for each chapter, Make sure to includes all topic point in the content, make sure to give content in HTML format (Do not Add HTML, Head, Body, title tag), The chapters : '+JSON.stringify(Chapter)+'';
+      const PROMPT = `Generate a well-structured, readable, and engaging exam material for each chapter in HTML format.  
+**Ensure the content is fully compatible with dangerouslySetInnerHTML.**  
+
+📌 **Content Structure:**  
+- Use **<h1>** for the chapter title.  
+- Use **<h2>** for main topics.  
+- Use **<h3>** for subtopics.  
+- Use **<p>** for explanations with proper spacing.  
+- Use **<strong>** and **<em>** for emphasis.  
+- Use **<ul>** and **<li>** for listing key points.  
+- Use **<pre>** and **<code>** for code snippets.  
+- Ensure **all tags are properly closed and well-formed.**  
+- Include an **"Exam Questions"** section at the end of each chapter.  
+
+📌 **Key Considerations:**  
+- The HTML should be **clean, readable, and visually appealing**.  
+- Avoid inline styles; rely on semantic HTML.  
+- Ensure the content is **safe for direct rendering** with dangerouslySetInnerHTML.  
+
+**Chapters:** ${JSON.stringify(Chapter)}`;
       const result = await generateNotes.sendMessage(PROMPT);
       const aiResp = result.response.text();
 

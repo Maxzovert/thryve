@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import MaterialCardItem from "./MaterialCardItem"
 import axios from "axios"
+import Link from "next/link"
 
 function StudyMeterial({courseId}) {
     const [studyTypeContent , setStudyTypeContent] = useState()
@@ -55,9 +56,11 @@ return (
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3a">
             {MaterislList.map((item , index)=>(
-                <MaterialCardItem item={item} key={index}
-                    studyTypeContent={studyTypeContent}
-                />
+                <Link key={index} href={'/course/'+courseId+item.path}>
+                    <MaterialCardItem item={item} key={index}
+                        studyTypeContent={studyTypeContent}
+                    />
+                </Link>
             ))}
         </div>
     </div>
