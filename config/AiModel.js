@@ -8,7 +8,7 @@ const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-2.0-flash",
+  model: "gemini-1.5-flash",
 });
 
 const generationConfig = {
@@ -39,7 +39,20 @@ const generationConfig = {
 
   export const generateNotes = model.startChat({
     generationConfig,
-
+    history: [
+      {
+        role: "user",
+        parts: [
+          {text: "Generate exam material detail content for each chapter , Make sure to includes all topic point in the\ncontent, make sure to givy content in HTML format (Do not Add HTMLK , Head, Body, title tag), The\nchapters :\n{\n      \"chapter_title\": \"Object-Oriented Programming (OOP)\",\n      \"emoji\": \"🏛️\",\n      \"chapter_summary\": \"This chapter introduces the concepts of object-oriented programming, including classes, objects, inheritance, polymorphism, and encapsulation.\",\n      \"topics\": [\n        \"Classes and Objects\",\n        \"Attributes and Methods\",\n        \"Inheritance (single and multiple)\",\n        \"Polymorphism (method overriding and overloading)\",\n        \"Encapsulation (private and protected attributes)\",\n        \"Abstraction\",\n        \"`__init__` method (constructor)\",\n        \"`self` parameter\"\n      ]\n    },\n\n(use h1 tag for heading and h2 for subheadding and code for code snippet and pre tag make it looking good  i want to use it in next js with dangerouslySetInnerHTML)"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text: "```html\n<h1>Object-Oriented Programming (OOP) 🏛️</h1>\n\n<h2>Classes and Objects</h2>\n<p>This section covers the fundamental concepts of classes and objects.  A class is a blueprint for creating objects, while an object is an instance of a class.  We'll explore how to define classes and create objects from them.</p>\n\n<h2>Attributes and Methods</h2>\n<p>Attributes represent the data associated with an object, while methods define the actions an object can perform.  We will learn how to define and access both attributes and methods within a class.</p>\n<pre><code class=\"language-python\">\nclass Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n\n    def bark(self):\n        print(\"Woof!\")\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.name)  # Output: Buddy\nmy_dog.bark()       # Output: Woof!\n</code></pre>\n\n\n<h2>Inheritance (Single and Multiple)</h2>\n<p>Inheritance allows you to create new classes (derived classes) based on existing classes (base classes).  This promotes code reusability and reduces redundancy. We will explore both single inheritance (one base class) and multiple inheritance (multiple base classes).</p>\n<pre><code class=\"language-python\">\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def bark(self):\n        print(\"Woof!\")\n\nmy_dog = Dog(\"Buddy\")\nprint(my_dog.name)  # Output: Buddy (inherited from Animal)\nmy_dog.bark()       # Output: Woof!\n</code></pre>\n\n<h2>Polymorphism (Method Overriding and Overloading)</h2>\n<p>Polymorphism allows objects of different classes to be treated as objects of a common type. Method overriding involves changing the implementation of a method inherited from a base class.  Method overloading (not directly supported in Python in the same way as some other languages) will be discussed conceptually.</p>\n\n<h2>Encapsulation (Private and Protected Attributes)</h2>\n<p>Encapsulation protects the internal state of an object by restricting direct access to its attributes.  We will discuss the use of naming conventions (e.g., `_protected`, `__private`) to achieve encapsulation in Python.</p>\n<pre><code class=\"language-python\">\nclass Person:\n    def __init__(self, age):\n        self._age = age  # Protected attribute\n\n    def get_age(self):\n        return self._age\n\nmy_person = Person(30)\nprint(my_person.get_age()) # Accessing through a method\n</code></pre>\n\n<h2>Abstraction</h2>\n<p>Abstraction hides complex implementation details and presents a simplified interface to the user.  We'll explore how abstraction improves code organization and maintainability.</p>\n\n<h2>`__init__` Method (Constructor)</h2>\n<p>The `__init__` method is a special method in Python that is automatically called when you create an object of a class.  It is used to initialize the object's attributes.</p>\n\n<h2>`self` Parameter</h2>\n<p>The `self` parameter is a convention in Python class methods. It refers to the instance of the class itself. It is used to access and modify the attributes of the object.</p>\n\n```\n"},
+        ],
+      },
+    ],
   });
   // const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
   // console.log(result.response.text());
