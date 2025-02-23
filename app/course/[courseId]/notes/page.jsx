@@ -2,13 +2,14 @@
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function ViewNotes() {
+    const route = useRouter();
   const { courseId } = useParams();
   const [notes, setNotes] = useState([]);
-  const [stepCount, setStepCount] = useState(0); // Start from index 0
-
+  const [stepCount, setStepCount] = useState(0);
   useEffect(() => {
     GetNotes();
   }, []);
@@ -94,13 +95,18 @@ function ViewNotes() {
 
           {/* Render Cleaned Chapter Content */}
           <div
-            className="mt-5 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-code:bg-gray-200 prose-code:p-1 prose-code:rounded prose-code:text-sm prose-code:font-mono"
+            className="mt-10 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-code:bg-gray-200 prose-code:p-1 prose-code:rounded prose-code:text-sm prose-code:font-mono"
             dangerouslySetInnerHTML={{
               __html: parsedNotes.content
-                ?.replace(/\n/g, "<br/>") // Convert new lines to HTML breaks
-                ?.replace(/\\n/g, "<br/>") || "", // Handle escaped new lines
+                ?.replace(/\n/g, "<br/>") 
+                ?.replace(/\\n/g, "<br/>") || "",
             }}
           />
+          {notes?.length == stepCount + 1 && 
+          <div className="flex justify-center flex-col w-50 items-center mt-10">
+            <h2>END of Notes</h2>
+            <Button className="mt-5" onClick={()=>route.back()}>Go to Course Page</Button>
+            </div>}
         </div>
       </div>
     )
