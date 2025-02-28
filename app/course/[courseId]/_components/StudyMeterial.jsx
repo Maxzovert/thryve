@@ -4,7 +4,7 @@ import MaterialCardItem from "./MaterialCardItem"
 import axios from "axios"
 import Link from "next/link"
 
-function StudyMeterial({courseId}) {
+function StudyMeterial({courseId , course}) {
     const [studyTypeContent , setStudyTypeContent] = useState()
     const MaterislList = [
         {
@@ -47,7 +47,6 @@ function StudyMeterial({courseId}) {
             courseId : courseId,
             studyType : 'ALL'
         })
-        console.log(result?.data);
         setStudyTypeContent(result.data)
     }
 return (
@@ -59,6 +58,7 @@ return (
                 <Link key={index} href={'/course/'+courseId+item.path}>
                     <MaterialCardItem item={item} key={index}
                         studyTypeContent={studyTypeContent}
+                        course={course}
                     />
                 </Link>
             ))}

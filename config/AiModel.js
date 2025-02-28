@@ -18,6 +18,13 @@ const generationConfig = {
   maxOutputTokens: 8192,
   responseMimeType: "application/json",
 };
+const generationConfig2 = {
+  temperature: 1,
+  topp: 0.95,
+  topK: 40,
+  maxOutputTokens: 8192,
+  responseMimeType: "text/plain" ,
+}
 
   export const courseOutline = model.startChat({
     generationConfig,
@@ -38,7 +45,7 @@ const generationConfig = {
   });
 
   export const generateNotes = model.startChat({
-    generationConfig,
+    generationConfig2,
     history: [
       {
         role: "user",
@@ -50,6 +57,24 @@ const generationConfig = {
         role: "model",
         parts: [
           {text: "```html\n<h1>Object-Oriented Programming (OOP) 🏛️</h1>\n\n<h2>Classes and Objects</h2>\n<p>This section covers the fundamental concepts of classes and objects.  A class is a blueprint for creating objects, while an object is an instance of a class.  We'll explore how to define classes and create objects from them.</p>\n\n<h2>Attributes and Methods</h2>\n<p>Attributes represent the data associated with an object, while methods define the actions an object can perform.  We will learn how to define and access both attributes and methods within a class.</p>\n<pre><code class=\"language-python\">\nclass Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n\n    def bark(self):\n        print(\"Woof!\")\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.name)  # Output: Buddy\nmy_dog.bark()       # Output: Woof!\n</code></pre>\n\n\n<h2>Inheritance (Single and Multiple)</h2>\n<p>Inheritance allows you to create new classes (derived classes) based on existing classes (base classes).  This promotes code reusability and reduces redundancy. We will explore both single inheritance (one base class) and multiple inheritance (multiple base classes).</p>\n<pre><code class=\"language-python\">\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def bark(self):\n        print(\"Woof!\")\n\nmy_dog = Dog(\"Buddy\")\nprint(my_dog.name)  # Output: Buddy (inherited from Animal)\nmy_dog.bark()       # Output: Woof!\n</code></pre>\n\n<h2>Polymorphism (Method Overriding and Overloading)</h2>\n<p>Polymorphism allows objects of different classes to be treated as objects of a common type. Method overriding involves changing the implementation of a method inherited from a base class.  Method overloading (not directly supported in Python in the same way as some other languages) will be discussed conceptually.</p>\n\n<h2>Encapsulation (Private and Protected Attributes)</h2>\n<p>Encapsulation protects the internal state of an object by restricting direct access to its attributes.  We will discuss the use of naming conventions (e.g., `_protected`, `__private`) to achieve encapsulation in Python.</p>\n<pre><code class=\"language-python\">\nclass Person:\n    def __init__(self, age):\n        self._age = age  # Protected attribute\n\n    def get_age(self):\n        return self._age\n\nmy_person = Person(30)\nprint(my_person.get_age()) # Accessing through a method\n</code></pre>\n\n<h2>Abstraction</h2>\n<p>Abstraction hides complex implementation details and presents a simplified interface to the user.  We'll explore how abstraction improves code organization and maintainability.</p>\n\n<h2>`__init__` Method (Constructor)</h2>\n<p>The `__init__` method is a special method in Python that is automatically called when you create an object of a class.  It is used to initialize the object's attributes.</p>\n\n<h2>`self` Parameter</h2>\n<p>The `self` parameter is a convention in Python class methods. It refers to the instance of the class itself. It is used to access and modify the attributes of the object.</p>\n\n```\n"},
+        ],
+      },
+    ],
+  });
+
+  export const GenerateStudyTypeContentAiModel = model.startChat({
+    generationConfig,
+    history: [
+      {
+        role: "user",
+        parts: [
+          {text: "Generate the flashcard on topic : Flutter\nFundamentals. Usel Interface (U l)\ndevelopment,Basic App Navigation in\n'SON format with front back content.\nMaximum 15"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text: "```json\n[\n  {\n    \"front\": \"What is Flutter?\",\n    \"back\": \"Flutter is Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.\"\n  },\n  {\n    \"front\": \"What is a Widget in Flutter?\",\n    \"back\": \"Everything in Flutter is a widget.  Widgets are the fundamental building blocks of the UI, representing elements like text, images, buttons, and layouts.\"\n  },\n  {\n    \"front\": \"Explain the difference between StatelessWidget and StatefulWidget.\",\n    \"back\": \"StatelessWidget:  A widget that doesn't change after it's built. StatefulWidget: A widget that can change its state, requiring rebuilding.\"\n  },\n  {\n    \"front\": \"What is the purpose of `BuildContext`?\",\n    \"back\": \"BuildContext provides information about the widget's position in the widget tree.  It allows access to things like themes and parent widgets.\"\n  },\n  {\n    \"front\": \"Name three common layout widgets in Flutter.\",\n    \"back\": \"Row, Column, Stack\"\n  },\n  {\n    \"front\": \"How do you navigate to a new screen in Flutter?\",\n    \"back\": \"Using `Navigator.push()` or `Navigator.pushNamed()`.\"\n  },\n  {\n    \"front\": \"What is `Navigator.push()` used for?\",\n    \"back\": \"Pushing a new route (screen) onto the navigation stack.  This adds a new screen on top of the current one.\"\n  },\n  {\n    \"front\": \"What is `Navigator.pop()` used for?\",\n    \"back\": \"Removing the current route from the navigation stack, effectively going back to the previous screen.\"\n  },\n  {\n    \"front\": \"What is the role of a `MaterialApp` widget?\",\n    \"back\": \"It provides a default Material Design implementation for your app, including themes and navigation.\"\n  },\n  {\n    \"front\": \"Explain the concept of routing in Flutter.\",\n    \"back\": \"Routing defines how different screens are connected and how navigation between them occurs.  It manages the navigation stack.\"\n  },\n  {\n    \"front\": \"What is a Route in Flutter?\",\n    \"back\": \"A Route represents a single screen or page in your application's navigation history.\"\n  },\n  {\n    \"front\": \"How can you pass data between screens using navigation?\",\n    \"back\": \"By passing arguments to `Navigator.push()` or `Navigator.pushNamed()` using a `RouteSettings` object.\"\n  },\n  {\n    \"front\": \"What is the purpose of `MaterialPageRoute`?\",\n    \"back\": \"It's a type of route that provides a standard Material Design transition animation between screens.\"\n  },\n  {\n    \"front\": \"What is a key benefit of using named routes?\",\n    \"back\": \"Improved code readability and maintainability.  It allows you to refer to routes by name instead of directly creating and pushing routes.\"\n  },\n  {\n    \"front\": \"How do you define named routes in Flutter?\",\n    \"back\": \"Using the `routes` property in `MaterialApp` or by using `onGenerateRoute` to handle route generation dynamically.\"\n  }\n]\n```\n"},
         ],
       },
     ],

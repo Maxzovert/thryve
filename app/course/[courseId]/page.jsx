@@ -15,14 +15,13 @@ function  Course() {
 
     const GetCourse = async() =>{
         const result = await axios.get('/api/courses?courseId='+courseId)
-        console.log(result);
         setCourse(result.data.result);
     }
   return (
     <div>
       <div className="">
       <CourseIntro course={course}/>
-      <StudyMeterial courseId={courseId}/>
+      <StudyMeterial courseId={courseId} course={course}/>
       <ChapterList course={course}/>
       </div>
     </div>
