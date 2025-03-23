@@ -11,7 +11,7 @@ function MaterialCardItem({item , studyTypeContent , courseId,course}) {
     setLoading(true)
     let chapters = ''
     course?.courseLayout.chapters.forEach((chapter)=>{
-      chapters = (chapter.chapter_title || chapter?.chaptertitle)+','+chapters
+      chapters = (chapter.chapter_title || chapter?.chapterTitle)+','+chapters
     });
     const result = await axios.post('/api/study-type-content',{
       courseId: course?.courseId,

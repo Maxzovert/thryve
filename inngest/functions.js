@@ -1,4 +1,7 @@
-import { generateNotes, GenerateStudyTypeContentAiModel } from "@/config/AiModel";
+import {
+  generateNotes,
+  GenerateStudyTypeContentAiModel,
+} from "@/config/AiModel";
 import { inngest } from "./client";
 import { db } from "@/config/db";
 import {
@@ -63,9 +66,7 @@ export const GenerateNotes = inngest.createFunction(
       const Chapters = course?.courseLayout?.chapters;
       let index = 0;
       Chapters.forEach(async (Chapter) => {
-        const PROMPT = `Generate exam material detail content for each chapter , Make sure to includes all topic point in the
-                        content, make sure to givy content in HTML format (Do not Add HTMLK , Head, Body, title tag), The
-                        chapters : '+ ${JSON.stringify(Chapter)}`;
+        const PROMPT = `Generate exam material with detailed content for each chapter. Ensure all topic points are covered thoroughly. Format the output using proper HTML structure:Use <h1> for chapter titles. Use <h2> for subheadings (topics within the chapter). Use <code> and <pre> tags for code snippets and examples. Ensure well-structured and readable content. and make sure to givy content in HTML format (Do not Add HTML , Head, Body, title tag) ${JSON.stringify(Chapter)}`;
 
         const result = await generateNotes.sendMessage(PROMPT);
         const aiResp = result.response.text();
@@ -97,25 +98,28 @@ export const GenerateNotes = inngest.createFunction(
 
 
 export const GenerateStudyTypeContent = inngest.createFunction(
-  {id : 'Generate Study Type Content'},
-  {event : 'studyType.content'},
-
-  async({event , step})=>{
-    const {studyType , prompt, courseId, recordId} = event.data;
-    const FlashcardAiResult = await step.run('Generating FlashCard using Ai',async()=>{
-
-      const result = await GenerateStudyTypeContentAiModel.sendMessage(prompt)
-      const AIResult = JSON.parse(result.response.text());
-      return AIResult;
-    })
-
-    const DBResult = await step.run('Save Result to DB' , async()=>{
-      const result = await db.update(STUDY_TYPE_CONTENT_TABLE)
-      .set({
-        content : FlashcardAiResult
-      }).where(eq(STUDY_MATERIAL_TABLE.id , recordId))
-
-      return 'Data inserted'
-    })
+  { id: "Generate Study Type Content" },
+  { event: "studyType.content" },
+  async ({ event, step }) => {
+    const { studyType, prompt, courseId, recordId } = event.data;
+    const FlashcardAiResult = await step.run(
+      "Generating FlashCard using Ai",
+      async () => {
+        const result = await GenerateStudyTypeContentAiModel.sendMessage(
+          prompt
+        );
+        const AIResult = JSON.parse(result.response.text());
+        return AIResult;
+      }
+    );
+    const DBResult = await step.run("Save Result to DB", async () => {
+      const result = await db
+        .update(STUDY_TYPE_CONTENT_TABLE)
+        .set({
+          content: FlashcardAiResult,
+        })
+        .where(eq(STUDY_TYPE_CONTENT_TABLE.id, recordId));
+      return "Data inserted";
+    });
   }
 )
