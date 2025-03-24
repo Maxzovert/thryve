@@ -79,5 +79,24 @@ const generationConfig2 = {
       },
     ],
   });
+
+
+ export const GenerateQUizAiModel = model.startChat({
+    generationConfig,
+    history: [
+      {
+        role: "user",
+        parts: [
+          {text: "Generate Quiz on topic : Python Developer Interview Prep: Moderate Level\nwith Question and Options along with\nerect answer in JSON format. (Max 10)"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text: "```json\n{\n  \"quiz\": {\n    \"title\": \"Python Developer Interview Prep: Moderate Level\",\n    \"questions\": [\n      {\n        \"question\": \"What is the output of the following code snippet? \\n```python\\nx = 5\\ny = 10\\nprint(x is y)\\n```\",\n        \"options\": [\"True\", \"False\", \"Error\", \"None\"],\n        \"answer\": \"False\"\n      },\n      {\n        \"question\": \"What does the `__name__` variable represent in Python?\",\n        \"options\": [\"The name of the current module\", \"The name of the main function\", \"The name of the current file\", \"The version of Python\"],\n        \"answer\": \"The name of the current module\"\n      },\n      {\n        \"question\": \"Explain the difference between `list.append()` and `list.extend()`.\",\n        \"options\": [\n          \"`append()` adds an element to the end, `extend()` adds multiple elements as separate items.\",\n          \"`append()` adds multiple elements as a single item, `extend()` adds an element to the end.\",\n          \"`append()` adds an element to the beginning, `extend()` adds an element to the end.\",\n          \"Both add multiple elements to the end of the list.\"\n        ],\n        \"answer\": \"`append()` adds an element to the end, `extend()` adds multiple elements as separate items.\"\n      },\n      {\n        \"question\": \"How do you handle exceptions in Python?\",\n        \"options\": [\"Using `try-except` blocks\", \"Using `if-else` statements\", \"Using `for` loops\", \"Using `while` loops\"],\n        \"answer\": \"Using `try-except` blocks\"\n      },\n      {\n        \"question\": \"What is a decorator in Python?\",\n        \"options\": [\n          \"A function that takes another function as input and extends its functionality\",\n          \"A type of loop\",\n          \"A way to define classes\",\n          \"A data structure\"\n        ],\n        \"answer\": \"A function that takes another function as input and extends its functionality\"\n      },\n      {\n        \"question\": \"What is the purpose of the `lambda` keyword?\",\n        \"options\": [\n          \"To create anonymous functions\",\n          \"To define classes\",\n          \"To handle exceptions\",\n          \"To create modules\"\n        ],\n        \"answer\": \"To create anonymous functions\"\n      },\n      {\n        \"question\": \"What is the difference between shallow copy and deep copy?\",\n        \"options\": [\n          \"Shallow copy creates a new object but references the same data, deep copy creates a completely new object with its own data.\",\n          \"Shallow copy creates a completely new object, deep copy does not create a new object.\",\n          \"There is no difference between shallow and deep copy.\",\n          \"Shallow copy is faster than deep copy.\"\n        ],\n        \"answer\": \"Shallow copy creates a new object but references the same data, deep copy creates a completely new object with its own data.\"\n      },\n      {\n        \"question\": \"What does the `yield` keyword do in Python?\",\n        \"options\": [\n          \"Creates a generator\",\n          \"Returns a value from a function\",\n          \"Raises an exception\",\n          \"Defines a class\"\n        ],\n        \"answer\": \"Creates a generator\"\n      },\n      {\n        \"question\": \"How do you create a multi-threaded application in Python?\",\n        \"options\": [\n          \"Using the `threading` module\",\n          \"Using the `multiprocessing` module\",\n          \"Using asynchronous programming with `asyncio`\",\n          \"All of the above\"\n        ],\n        \"answer\": \"All of the above\"\n      },\n      {\n        \"question\": \"What is a Python list comprehension?\",\n        \"options\": [\n          \"A concise way to create lists\",\n          \"A type of loop\",\n          \"A way to define functions\",\n          \"A data structure\"\n        ],\n        \"answer\": \"A concise way to create lists\"\n      }\n    ]\n  }\n}\n```\n"},
+        ],
+      },
+    ],
+  });
   // const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
   // console.log(result.response.text());

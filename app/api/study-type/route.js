@@ -17,8 +17,8 @@ export async function POST(req) {
         const result = {
             notes: notes,
             flashcard :contentList?.find(item => item.type == 'Flashcard'),
-            quiz : null,
-            qa : null
+            quiz : contentList?.find(item => item.type == 'Quiz'),
+            qa : contentList?.find(item => item.type == 'QA')
         }
         return NextResponse.json(result);
     }
@@ -29,6 +29,7 @@ export async function POST(req) {
 
         return NextResponse.json(notes)
     }
+    
     else {
         const flashcard = await db
         .select().from(STUDY_TYPE_CONTENT_TABLE)
