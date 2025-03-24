@@ -18,7 +18,7 @@ function StudyMeterial({courseId , course}) {
             name: 'Flashcard',
             desc: 'It help to remember the concepts',
             icon: '/flashcard.png',
-            path: '/flashcard',
+            path: '/flashcards',
             type: 'flashcard'
         },
         {

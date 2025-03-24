@@ -35,7 +35,7 @@ function ViewNotes() {
         <div key={index} className={`w-full h-2 rounded-full 
           ${index < stepCount ? "bg-primary" : "bg-gray-200"}`}></div>
       ))}
-      <Button variant="outline" size="sm" onClick={()=>setStepCount(stepCount + 1)}>Previous</Button>
+      <Button variant="outline" size="sm" onClick={()=>setStepCount(stepCount + 1)}>Next</Button>
     </div>
     <div>
       <div dangerouslySetInnerHTML={{__html : (notes[stepCount]?.notes

@@ -1,6 +1,6 @@
 import { db } from "@/config/db";
 import { CHAPTER_NOTES_TABLE, STUDY_TYPE_CONTENT_TABLE } from "@/config/schema";
-import { eq } from "drizzle-orm";
+import { eq , and} from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -28,5 +28,13 @@ export async function POST(req) {
         .where(eq(CHAPTER_NOTES_TABLE?.courseId,courseId));
 
         return NextResponse.json(notes)
+    }
+    else {
+        const flashcard = await db
+        .select().from(STUDY_TYPE_CONTENT_TABLE)
+        .where(and (eq(STUDY_TYPE_CONTENT_TABLE?.courseId,courseId),
+        eq(STUDY_TYPE_CONTENT_TABLE.type, studyType)))
+
+        return NextResponse.json(flashcard)
     }
 }
