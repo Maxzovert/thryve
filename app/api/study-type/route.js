@@ -31,11 +31,11 @@ export async function POST(req) {
     }
     
     else {
-        const flashcard = await db
+        const result = await db
         .select().from(STUDY_TYPE_CONTENT_TABLE)
         .where(and (eq(STUDY_TYPE_CONTENT_TABLE?.courseId,courseId),
         eq(STUDY_TYPE_CONTENT_TABLE.type, studyType)))
 
-        return NextResponse.json(flashcard)
+        return NextResponse.json(result)
     }
 }

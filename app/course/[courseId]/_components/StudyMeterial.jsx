@@ -25,7 +25,7 @@ function StudyMeterial({courseId , course}) {
             name: 'Quiz',
             desc: 'Great way to test your knowledge' ,
             icon: '/quiz.png',
-            path: '/',
+            path: '/quiz',
             type: 'quiz'
         },
         {
