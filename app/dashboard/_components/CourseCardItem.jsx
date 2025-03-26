@@ -7,12 +7,21 @@ import { RefreshCcw } from "lucide-react";
 import Link from "next/link";
 
 function CourseCardItem({course}) {
+
+  const formattedDate = course?.createdAt
+  ? new Date(course.createdAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "Unknown";
+
   return (
     <div className="border rounded-lg shadow-md p-5">
       <div>
         <div className="flex items-center justify-between">
             <Image src={'/knowledge.png'} alt='other' width={50} height= {50}/>
-            <h2 className="text-[10px] p-1 px-2 rounded-full bg-blue-600 text-white">20 Dec 2025</h2>
+            <h2 className="text-[10px] p-1 px-2 rounded-full bg-blue-600 text-white">{formattedDate}</h2>
         </div>
         <h2 className="mt-3 font-medium text-lg">{course?.courseLayout?.course_title}</h2>
         <p className="text-xs line-clamp-2 text-gray-500 mt-2">{course?.courseLayout?.course_summary}</p>
