@@ -18,7 +18,7 @@ export async function POST(req) {
             notes: notes,
             flashcard :contentList?.find(item => item.type == 'Flashcard'),
             quiz : contentList?.find(item => item.type == 'Quiz'),
-            qa : contentList?.find(item => item.type == 'QA')
+            qa : contentList?.find(item => item.type == 'Question/Answer')
         }
         return NextResponse.json(result);
     }
