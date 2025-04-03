@@ -12,6 +12,7 @@ import Linkedin from "../public/linkedin.png";
 import SourceCode from "../public/srccode.png";
 import Projects from "../public/project.png";
 import Link from "next/link";
+// import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 
 export default function Home() {
   const ImageAndName = [
@@ -50,7 +51,7 @@ export default function Home() {
           <h2 className="font-bold text-2xl">Thryve</h2>
         </div>
         <div>
-          <Button onClick={handleClick}>Dashboard</Button>
+          <Button onClick={handleClick}>Get Started</Button>
         </div>
         <div className="absolute bottom-[-10px] left-0 w-full h-10 bg-white/40 blur-lg"></div>
       </div>
@@ -102,7 +103,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Social */}
       {/* Social Links Section */}
       <div className="flex justify-center items-center flex-wrap gap-6 m-20">
         {ImageAndName.map((item, index) => (
@@ -127,6 +127,33 @@ export default function Home() {
           </Link>
         ))}
       </div>
+
+      {/* Demo Video Section */}
+      {/* <div className="text-center mt-15">
+        <h1 className="text-3xl font-bold text-black mb-5 p-10">Demo Video</h1>
+
+        <div className="flex justify-center mt-10 bg-blue-600 rounded-lg">
+          <div className="max-w-[1200px] w-full px-4">
+            <HeroVideoDialog
+              className="block dark:hidden rounded-2xl mt-10 mb-10"
+              animationStyle="from-center"
+              videoSrc="/thryve.mp4"
+              thumbnailSrc="/vidThumbnail.png"
+              thumbnailAlt="Light Mode Demo"
+            />
+            <HeroVideoDialog
+              className="hidden dark:block"
+              animationStyle="from-center"
+              videoSrc="/thryve.mp4"
+              thumbnailSrc="/vidThumbnail.png"
+              thumbnailAlt="Dark Mode Demo"
+            />
+          </div>
+        </div>
+      </div> */}
+
+    {/* Tech Used */}
+
     </div>
   );
 }
