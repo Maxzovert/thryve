@@ -20,5 +20,5 @@ export async function POST(req){
         success_url: process.env.HOST_URL+'payment-success?session_id={CHECKOUT_SESSION_ID}',
         cancel_url: process.env.HOST_URL,
       });
-    return NextResponse.json({session})
+    return NextResponse.json(session)
 }
