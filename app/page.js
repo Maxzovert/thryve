@@ -11,8 +11,13 @@ import Github from "../public/github.png";
 import Linkedin from "../public/linkedin.png";
 import SourceCode from "../public/srccode.png";
 import Projects from "../public/project.png";
+import NOTESSS from "../public/FeatureSS/NOTESSS.png"
+import FLasgCard1 from "../public/FeatureSS/FLASHCARDSS1.png"
+import QuizSS from "../public/FeatureSS/QUIZSS.png"
+import QASS from "../public/FeatureSS/QASS.png"
 import Link from "next/link";
-// import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
+import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 export default function Home() {
   const ImageAndName = [
@@ -129,7 +134,7 @@ export default function Home() {
       </div>
 
       {/* Demo Video Section */}
-      {/* <div className="text-center mt-15">
+      <div className="text-center mt-15">
         <h1 className="text-3xl font-bold text-black mb-5 p-10">Demo Video</h1>
 
         <div className="flex justify-center mt-10 bg-blue-600 rounded-lg">
@@ -150,10 +155,88 @@ export default function Home() {
             />
           </div>
         </div>
-      </div> */}
+      </div>
 
-    {/* Tech Used */}
+      {/* Tech Used */}
 
+      <div>
+        <div>
+          <h2 className="text-3xl font-bold text-black mb-5 p-10 text-center">
+            Features
+          </h2>  
+        </div>
+
+        <div>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col ml-10">
+              <BoxReveal>
+            <h1 className="text-4xl font-bold text-black ml-20">📝 AI-Generated Notes</h1>
+            </BoxReveal>
+            <BoxReveal>
+            <p className="text-xl text-slate-500 p-5 ml-24" > Forget hours of manual note-taking.<br/> Our AI instantly creates clear, <br/>structured, and concise notes <br/> tailored to any topic or subject. <br/>Perfect for quick reviews and <br/>deep dives alike.</p>
+            </BoxReveal>
+            </div>
+            <Image 
+              src={NOTESSS} 
+              width={500} 
+              height={800}
+              className="border-slate-900 shadow-xl rounded-lg mr-24"
+              />
+          </div>
+
+          <div className="flex justify-between items-center mt-20">
+          <Image 
+              src={FLasgCard1} 
+              width={500} 
+              height={800}
+              className="border-slate-900 shadow-xl rounded-lg ml-24"
+              />
+            <div className="flex flex-col mr-14">
+              <BoxReveal>
+            <h1 className="text-4xl font-bold text-black mr-20">🔁 Smart Flashcards</h1>
+            </BoxReveal>
+            <BoxReveal>
+            <p className="text-xl text-slate-500 p-5 mr-24" > Master subjects with AI-crafted flashcards <br/> that highlight the most important terms, <br/> definitions, and key ideas. Ideal for <br/>spaced repetition and fast recall.</p>
+            </BoxReveal>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center mt-20">
+            <div className="flex flex-col ml-16">
+              <BoxReveal>
+            <h1 className="text-4xl font-bold text-black ml-20">❓ Adaptive Quizzes</h1>
+            </BoxReveal>
+            <BoxReveal>
+            <p className="text-xl text-slate-500 p-5 ml-24" >Challenge yourself with AI-generated quizzes <br/>that adapt to your skill level. <br/>Each question is designed to reinforce learning  <br/>and track your progress in real time.</p>
+            </BoxReveal>
+            </div>
+            <Image 
+              src={QuizSS} 
+              width={500} 
+              height={800}
+              className="border-slate-900 shadow-xl rounded-lg mr-24"
+              />
+          </div>
+
+          <div className="flex justify-between items-center mt-20">
+          <Image 
+              src={QASS} 
+              width={500} 
+              height={800}
+              className="border-slate-900 shadow-xl rounded-lg ml-24"
+              />
+            <div className="flex flex-col mr-12">
+              <BoxReveal>
+            <h1 className="text-4xl font-bold text-black mr-20">💬 AI-Generated Q&A Bank</h1>
+            </BoxReveal>
+            <BoxReveal>
+            <p className="text-xl text-slate-500 p-5 mr-24" >No need to ask — we’ve already answered it.<br/>Access a comprehensive bank of AI-generated<br/> questions and answers, designed to simulate<br/>real-world exams and test your understanding.</p>
+            </BoxReveal>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 }
