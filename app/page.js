@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Github from "../public/github.png";
-import Linkedin from "../public/linkedin.png";
+import GithubT from "../public/github.png";
+import LinkedinT from "../public/linkedin.png";
 import SourceCode from "../public/srccode.png";
 import Projects from "../public/project.png";
 import NOTESSS from "../public/FeatureSS/NOTESSS.png";
@@ -24,16 +24,18 @@ import AiIntigration from "../public/Technologies/AiIntigration.png";
 import Link from "next/link";
 import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 import { BoxReveal } from "@/components/magicui/box-reveal";
+import { Mail, Phone, Linkedin , Github} from "lucide-react"
+
 
 export default function Home() {
   const ImageAndName = [
     {
-      image: Github,
+      image: GithubT,
       name: "Github",
       path: "https://github.com/Maxzovert",
     },
     {
-      image: Linkedin,
+      image: LinkedinT,
       name: "Linkedin",
       path: "https://www.linkedin.com/in/95abdullah99/",
     },
@@ -379,9 +381,60 @@ export default function Home() {
             </p>
           </div>
         </div>
-
-
       </div>
+
+      {/* FOoter */}
+
+      <footer className="  border-y-2 border-gray-200 mt-20 rounded-lg shadow-lg">
+      <div className="container mx-auto px-4 py-6 m-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <div className="flex flex-row items-center">
+              <Image src={"/logo.svg"} height={50} width={50}/>
+            <h2 className="text-3xl font-bold text-primary ml-2">Thryve</h2>
+            </div>
+            <p className="mt-2 text-xl">Empowering learners everywhere with smart, innovative tools that make education effortless.</p>
+          </div>
+
+          {/* Social Media */}
+          <div className="flex flex-col md:items-center justify-center">
+            <div className="flex space-x-5">
+            <div className="border border-primary h-180 w-180 rounded-2xl flex items-center justify-center p-5">
+              <Link href="https://www.linkedin.com/in/95abdullah99/" className="text-primary hover:text-blue-800 ">
+                <Linkedin className="h-100 w-100" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
+              </div>
+              <div className="border border-primary h-180 w-180 rounded-2xl flex items-center justify-center p-5">
+              <Link href="https://github.com/Maxzovert" className="text-primary hover:text-blue-800 ">
+                <Github className="h-100 w-100" />
+                <span className="sr-only">Github</span>
+              </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col md:items-end mt-8">
+            <div className="flex items-center gap-2">
+              <Mail className="h-100 w-100 text-primary" />
+              <span className="text-xl">95abdullah99@gmail.com</span>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
+              <Phone className="h-100 w-100 text-primary" />
+              <span className="text-xl">+91 9599454313</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-10 pt-4 border-t border-gray-100 text-center text-gray-500 text-xl font-semibold">
+          © {new Date().getFullYear()} <span className="text-primary">Thryve.</span> All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+
     </div>
   );
 }
