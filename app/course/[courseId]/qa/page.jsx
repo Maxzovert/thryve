@@ -11,18 +11,12 @@ function QuestionAnswers() {
   const [stepCount, setStepCount] = useState(0);
 
   useEffect(() => {
-<<<<<<< HEAD
     console.log("🚀 courseId:", courseId);
-=======
->>>>>>> 80d534906ab821fa6b87a46ad4204fdb55587686
     if (courseId) {
       GetQuestionAnswers();
     }
   }, [courseId]);
-<<<<<<< HEAD
   
-=======
->>>>>>> 80d534906ab821fa6b87a46ad4204fdb55587686
 
   const GetQuestionAnswers = async () => {
     try {
@@ -33,16 +27,8 @@ function QuestionAnswers() {
 
       console.log("API Result:", result);
 
-<<<<<<< HEAD
       const qaContent = result?.data?.[0]?.content?.QuestionAnswers || result?.data?.[0]?.content?.quiz?.questions;
       ;
-=======
-<<<<<<< HEAD
-    const qaContent = result?.data?.[0]?.content?.quiz?.questions;
-=======
-      const qaContent = result?.data?.[0]?.content?.QuestionAnswers;
->>>>>>> 80d534906ab821fa6b87a46ad4204fdb55587686
->>>>>>> 087ab06d88a5b96e0177edcf916b7e15df5e5c65
 
       if (Array.isArray(qaContent)) {
         setQAData(result.data);
