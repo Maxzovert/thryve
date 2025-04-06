@@ -27,7 +27,8 @@ function QuestionAnswers() {
 
       console.log("API Result:", result);
 
-    const qaContent = result?.data?.[0]?.content?.quiz?.questions;
+      const qaContent = result?.data?.[0]?.content?.QuestionAnswers || result?.data?.[0]?.content?.quiz?.questions;
+      ;
 
       if (Array.isArray(qaContent)) {
         setQAData(result.data);
