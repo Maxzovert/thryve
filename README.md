@@ -4,7 +4,7 @@ Welcome to **Thryve LMS**! A cutting-edge, AI-powered Learning Management System
 
 ---
 
-## 🛠️ Key Features
+# 🛠️ Key Features
 
 - **AI-Powered Learning**: Integrated with **Google Gemini** for content generation and adaptive learning paths.
 - **Personalized Learning Paths**: Tailored learning experiences based on user progress and needs.
@@ -67,3 +67,20 @@ INNGEST_SIGNING_KEY=your-inngest-signing-key
 ```bash
 NEXT_PUBLIC_DATABASE_CONNECTION_STRING=your-database-connection-string
 ```
+## 4. Start the development server
+```bash
+npm run dev
+```
+---
+# 🔗 Links
+- Live on - [Thryve](https://thryve-orpin.vercel.app/)
+- LinkedIn - [@LinkedIn](https://www.linkedin.com/in/95abdullah99/)
+---
+# ScreenShots
+##  1 Landing Page
+![image](https://github.com/user-attachments/assets/893c8da0-f5db-4f4e-82c7-2c0081161e19)
+## 2 DashBoard
+![Screenshot 2025-04-03 220443](https://github.com/user-attachments/assets/a9a9df7d-9faa-4ff5-804c-b1c91cdd441b)
+----
+# 📧Contact
+#### 95abdullah99@gmail.com
