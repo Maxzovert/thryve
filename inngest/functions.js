@@ -67,7 +67,9 @@ export const GenerateNotes = inngest.createFunction(
       const Chapters = course?.courseLayout?.chapters;
       let index = 0;
       Chapters.forEach(async (Chapter) => {
-        const PROMPT = `Generate exam material with detailed content for each chapter. Ensure all topic points are covered thoroughly. Format the output using proper HTML structure:Use <h1> for chapter titles. Use <h2> for subheadings (topics within the chapter). Use <code> and <pre> tags for code snippets and examples. Ensure well-structured and readable content. and make sure to givy content in HTML format (Do not Add HTML , Head, Body, title tag) ${JSON.stringify(Chapter)}`;
+        const PROMPT = `Generate exam material with detailed content for each chapter. Ensure all topic points are covered thoroughly. Format the output using proper HTML structure:Use <h1> for chapter titles. Use <h2> for subheadings (topics within the chapter). Use <code> and <pre> tags for code snippets and examples. Ensure well-structured and readable content. and make sure to givy content in HTML format (Do not Add HTML , Head, Body, title tag) ${JSON.stringify(
+          Chapter
+        )}`;
 
         const result = await generateNotes.sendMessage(PROMPT);
         const aiResp = result.response.text();
@@ -97,7 +99,6 @@ export const GenerateNotes = inngest.createFunction(
   }
 );
 
-
 export const GenerateStudyTypeContent = inngest.createFunction(
   { id: "Generate Study Type Content" },
   { event: "studyType.content" },
@@ -106,10 +107,10 @@ export const GenerateStudyTypeContent = inngest.createFunction(
     const AiResult = await step.run(
       "Generating FlashCard using Ai",
       async () => {
-        const result = 
-        studyType == 'Flashcard' ? 
-        await GenerateStudyTypeContentAiModel.sendMessage(prompt) : 
-        await GenerateQUizAiModel.sendMessage(prompt)
+        const result =
+          studyType == "Flashcard"
+            ? await GenerateStudyTypeContentAiModel.sendMessage(prompt)
+            : await GenerateQUizAiModel.sendMessage(prompt);
         const AIResult = JSON.parse(result.response.text());
         return AIResult;
       }
@@ -119,10 +120,10 @@ export const GenerateStudyTypeContent = inngest.createFunction(
         .update(STUDY_TYPE_CONTENT_TABLE)
         .set({
           content: AiResult,
-          status : 'Ready'
+          status: "Ready",
         })
         .where(eq(STUDY_TYPE_CONTENT_TABLE.id, recordId));
       return "Data inserted";
     });
   }
-)
+);
